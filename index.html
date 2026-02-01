@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Defaced by LuzySec</title>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
 
@@ -19,42 +20,32 @@
             font-family: 'Orbitron', monospace;
             overflow: hidden;
             height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
         }
 
-        /* Arrière-plan Matrix */
+        /* MATRIX */
         #matrix-bg {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: 1;
-            opacity: 0.4;
+            opacity: 0.5;
         }
 
-        /* Conteneur pour les logos soviétiques */
+        /* LOGOS */
         .brainrot-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            position: fixed;
+            inset: 0;
             z-index: 2;
-            pointer-events: none; /* Pour ne pas bloquer les clics sur le contenu */
+            pointer-events: none;
         }
 
         .soviet-logo {
             position: absolute;
-            width: 80px; /* Taille de base */
-            height: 80px;
-            font-size: 60px;
+            font-size: 70px;
             color: #ffcc00;
-            text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+            text-shadow: 0 0 15px red;
             animation: spin 3s linear infinite;
         }
 
@@ -63,240 +54,150 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Contenu principal */
+        /* CONTENU */
         .content {
             position: relative;
-            z-index: 3; /* Au-dessus des logos */
+            z-index: 3;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
             animation: glitch 2s infinite;
-            padding: 20px;
         }
 
         @keyframes glitch {
-            0%, 100% {
-                text-shadow: 
-                    0.05em 0 0 rgba(255, 0, 0, 0.75),
-                    -0.05em -0.025em 0 rgba(0, 255, 0, 0.75),
-                    0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
-            }
-            14% {
-                text-shadow: 
-                    0.05em 0 0 rgba(255, 0, 0, 0.75),
-                    -0.05em -0.025em 0 rgba(0, 255, 0, 0.75),
-                    0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
-            }
-            15% {
-                text-shadow: 
-                    -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
-                    0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
-                    -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
-            }
-            49% {
-                text-shadow: 
-                    -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
-                    0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
-                    -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+            0%,100% {
+                text-shadow:
+                2px 0 red,
+                -2px 0 cyan;
             }
             50% {
-                text-shadow: 
-                    0.025em 0.05em 0 rgba(255, 0, 0, 0.75),
-                    0.05em 0 0 rgba(0, 255, 0, 0.75),
-                    0 -0.05em 0 rgba(0, 0, 255, 0.75);
-            }
-            99% {
-                text-shadow: 
-                    0.025em 0.05em 0 rgba(255, 0, 0, 0.75),
-                    0.05em 0 0 rgba(0, 255, 0, 0.75),
-                    0 -0.05em 0 rgba(0, 0, 255, 0.75);
+                text-shadow:
+                -2px 0 red,
+                2px 0 cyan;
             }
         }
 
         h1 {
-            font-size: clamp(2.5em, 10vw, 6em); /* Taille de police responsive */
-            font-weight: 900;
-            letter-spacing: 0.05em;
-            margin-bottom: 20px;
-        }
-
-        .footer {
-            position: absolute;
-            bottom: 20px;
-            width: 100%;
-            text-align: center;
-            font-size: clamp(0.8em, 3vw, 1.2em); /* Taille de police responsive */
-            font-weight: 400;
-            letter-spacing: 0.05em;
-            z-index: 3;
-            opacity: 0.8;
+            font-size: clamp(3em, 10vw, 6em);
+            margin-bottom: 30px;
         }
 
         .redirect-button {
-            margin-top: 40px;
-            padding: 15px 30px;
-            font-size: clamp(1em, 3vw, 1.2em); /* Taille de police responsive */
-            font-family: 'Orbitron', monospace;
-            font-weight: 700;
-            background-color: transparent;
-            color: #ff0000;
-            border: 2px solid #ff0000;
+            padding: 15px 35px;
+            font-size: 1.2em;
+            background: transparent;
+            color: red;
+            border: 2px solid red;
             cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            position: relative;
-            overflow: hidden;
-            z-index: 3;
+            transition: 0.3s;
         }
 
         .redirect-button:hover {
-            background-color: #ff0000;
-            color: #000;
-            box-shadow: 0 0 20px #ff0000, inset 0 0 10px rgba(0,0,0,0.5);
-            text-shadow: 0 0 5px #000;
+            background: red;
+            color: black;
+            box-shadow: 0 0 20px red;
         }
 
-        .redirect-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
+        .footer {
+            position: fixed;
+            bottom: 15px;
             width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .redirect-button:hover::before {
-            left: 100%;
+            text-align: center;
+            z-index: 3;
+            opacity: 0.8;
         }
     </style>
 </head>
+
 <body>
 
-    <canvas id="matrix-bg"></canvas>
-    
-    <!-- Conteneur pour les éléments "brainrot" -->
-    <div class="brainrot-container" id="brainrot-container"></div>
+<canvas id="matrix-bg"></canvas>
 
-    <div class="content">
-        <h1>Defaced by LuzySec</h1>
-        <a href="#" id="redirect-btn" class="redirect-button">CONTINUER</a>
-    </div>
+<div class="brainrot-container" id="brainrot-container"></div>
 
-    <div class="footer">
-        Free Kurdistan
-    </div>
+<div class="content">
+    <h1>Defaced by LuzySec</h1>
+    <button class="redirect-button" id="redirect-btn">Explication</button>
+</div>
 
-    <script>
-        // --- GESTION DE L'EFFET MATRIX ---
-        const canvas = document.getElementById('matrix-bg');
-        const ctx = canvas.getContext('2d');
+<div class="footer">Free Kurdistan</div>
 
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
+<script>
+/* MATRIX ROUGE */
+const canvas = document.getElementById("matrix-bg");
+const ctx = canvas.getContext("2d");
 
-        const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
-        const matrixArray = matrix.split("");
-        const fontSize = 10;
-        let columns = canvas.width / fontSize;
-        const drops = [];
-        for(let x = 0; x < columns; x++) {
-            drops[x] = 1;
-        }
+function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener("resize", resize);
 
-        function drawMatrix() {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = '#ff0000';
-            ctx.font = fontSize + 'px monospace';
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%";
+const fontSize = 14;
+let columns = canvas.width / fontSize;
+let drops = Array.from({length: columns}).fill(1);
 
-            for(let i = 0; i < drops.length; i++) {
-                const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+function drawMatrix() {
+    ctx.fillStyle = "rgba(0,0,0,0.05)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "red";
+    ctx.font = fontSize + "px monospace";
 
-                if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
-                }
-                drops[i]++;
-            }
-        }
-        setInterval(drawMatrix, 35);
+    drops.forEach((y, i) => {
+        const text = letters[Math.floor(Math.random() * letters.length)];
+        ctx.fillText(text, i * fontSize, y * fontSize);
+        if (y * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+        drops[i]++;
+    });
+}
+setInterval(drawMatrix, 33);
 
-        // --- GESTION DES LOGOS "BRAINROT" ---
-        const brainrotContainer = document.getElementById('brainrot-container');
-                const brainrotContainer = document.getElementById('brainrot-container');
-        const sovietHammerSickle = '☭'; // Symbole marteau et faucille
-        const logoCount = 5; // Nombre de logos à afficher
+/* LOGOS DANS LES COINS */
+const container = document.getElementById("brainrot-container");
+const corners = [
+    { x: 0, y: 0 },
+    { x: window.innerWidth - 80, y: 0 },
+    { x: 0, y: window.innerHeight - 80 },
+    { x: window.innerWidth - 80, y: window.innerHeight - 80 }
+];
 
-        class BouncingLogo {
-            constructor(container) {
-                this.container = container;
-                this.element = document.createElement('div');
-                this.element.className = 'soviet-logo';
-                this.element.textContent = sovietHammerSickle;
-                
-                // Taille et position initiales aléatoires
-                this.size = 60 + Math.random() * 40; // Entre 60px et 100px
-                this.x = Math.random() * (window.innerWidth - this.size);
-                this.y = Math.random() * (window.innerHeight - this.size);
+const logos = corners.map(pos => {
+    const el = document.createElement("div");
+    el.className = "soviet-logo";
+    el.textContent = "☭";
+    el.x = pos.x;
+    el.y = pos.y;
+    el.vx = Math.random() > 0.5 ? 1.5 : -1.5;
+    el.vy = Math.random() > 0.5 ? 1.5 : -1.5;
+    container.appendChild(el);
+    return el;
+});
 
-                // Vitesse et direction aléatoires
-                this.vx = (Math.random() - 0.5) * 4; // Vitesse en x entre -2 et 2
-                this.vy = (Math.random() - 0.5) * 4; // Vitesse en y entre -2 et 2
+function animateLogos() {
+    logos.forEach(el => {
+        el.x += el.vx;
+        el.y += el.vy;
 
-                // Appliquer le style initial
-                this.element.style.width = this.size + 'px';
-                this.element.style.height = this.size + 'px';
-                this.element.style.fontSize = (this.size * 0.75) + 'px';
-                this.element.style.left = this.x + 'px';
-                this.element.style.top = this.y + 'px';
+        if (el.x <= 0 || el.x >= window.innerWidth - 80) el.vx *= -1;
+        if (el.y <= 0 || el.y >= window.innerHeight - 80) el.vy *= -1;
 
-                container.appendChild(this.element);
-            }
+        el.style.left = el.x + "px";
+        el.style.top = el.y + "px";
+    });
+    requestAnimationFrame(animateLogos);
+}
+animateLogos();
 
-            update() {
-                // Mettre à jour la position
-                this.x += this.vx;
-                this.y += this.vy;
+/* BOUTON */
+document.getElementById("redirect-btn").addEventListener("click", () => {
+    alert("Tony est une salope qui logs tous les mails du domaine see-know.org j’ai toute preuves contactez Swith sur Discord pour plus de proof");
+});
+</script>
 
-                // Gérer les collisions avec les bords de l'écran
-                if (this.x <= 0 || this.x + this.size >= window.innerWidth) {
-                    this.vx = -this.vx; // Inverser la direction sur l'axe x
-                    this.x = Math.max(0, Math.min(this.x, window.innerWidth - this.size)); // Empêcher de sortir des bords
-                }
-                if (this.y <= 0 || this.y + this.size >= window.innerHeight) {
-                    this.vy = -this.vy; // Inverser la direction sur l'axe y
-                    this.y = Math.max(0, Math.min(this.y, window.innerHeight - this.size)); // Empêcher de sortir des bords
-                }
-
-                // Appliquer la nouvelle position
-                this.element.style.left = this.x + 'px';
-                this.element.style.top = this.y + 'px';
-            }
-        }
-
-        const logos = [];
-        for (let i = 0; i < logoCount; i++) {
-            logos.push(new BouncingLogo(brainrotContainer));
-        }
-
-        // Boucle d'animation pour les logos
-        function animateLogos() {
-            logos.forEach(logo => logo.update());
-            requestAnimationFrame(animateLogos);
-        }
-        animateLogos();
-
-        // --- GESTION DU BOUTON ET DU MESSAGE ---
-        document.getElementById('redirect-btn').addEventListener('click', function(event) {
-            event.preventDefault(); // Empêche le comportement par défaut du lien
-            alert("Tony est une salope qui logs tous les mails du domaine see-know.org j'ai toute preuves contactez Swith sur Discord pour plus de proof");
-        });
-
-    </script>
 </body>
 </html>
